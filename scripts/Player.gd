@@ -19,12 +19,14 @@ var is_wall_sliding = false
 func _physics_process(delta):
 	if is_on_floor():
 		handle_floor()
-
-	handle_wall_jump(delta)
+	else:
+		handle_wall_jump(delta)
 
 	handle_lateral_movement()
 		
 	move_and_slide()
+
+	print_debug(not_on_floor_time)
 
 
 func handle_floor():
@@ -79,7 +81,7 @@ func handle_wall_jump(delta):
 
 			if new_direction:
 				$Sprite.flip_h = new_direction == -1
-				velocity.x = new_direction * speed
+				velocity.x = new_direction * -3
 			else:
 				velocity.x = move_toward(velocity.x, 0, speed)
 
