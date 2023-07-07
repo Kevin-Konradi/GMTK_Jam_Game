@@ -14,7 +14,12 @@ var not_on_floor_time = 0
 
 func _physics_process(delta):
 	# Add the gravity.
-	if not is_on_floor():
+	if is_on_floor():
+		if not_on_floor_time > 0:
+			$Particles.emitting = true
+		
+		not_on_floor_time = 0
+	else:
 		velocity.y += gravity * delta
 		not_on_floor_time += delta
 		
