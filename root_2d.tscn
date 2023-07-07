@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://cgwrq3tq7wwkb"]
+[gd_scene load_steps=24 format=3 uid="uid://cgwrq3tq7wwkb"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_syxgt"]
 [ext_resource type="Script" path="res://scripts/Searcher.gd" id="1_uei5n"]
 [ext_resource type="Texture2D" uid="uid://cs1mkswfkce7a" path="res://assets/spritesheets/spritesheet_retina.png" id="2_74405"]
 [ext_resource type="Texture2D" uid="uid://c6rouh6d26q4g" path="res://assets/spritesheets/player_sprites.png" id="2_ojde1"]
+[ext_resource type="Shader" path="res://scripts/searcher.gdshader" id="5_f3t5o"]
+[ext_resource type="Texture2D" uid="uid://cd407ykhac4wu" path="res://assets/searcher.png" id="6_akcmm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmkbo"]
 size = Vector2(17, 17)
@@ -426,6 +428,11 @@ tile_size = Vector2i(122, 122)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_fvobd")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_a3kxb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lp0ko"]
+shader = ExtResource("5_f3t5o")
+
 [node name="Root" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -447,7 +454,7 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Particles" type="CPUParticles2D" parent="Player"]
-position = Vector2(-0.7, 8.4)
+position = Vector2(-0.400012, 8.4)
 emitting = false
 amount = 25
 lifetime = 0.5
@@ -483,3 +490,19 @@ script = ExtResource("1_uei5n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.325, 0.325)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(954, 178)
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_a3kxb")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+material = SubResource("ShaderMaterial_lp0ko")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_akcmm")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
