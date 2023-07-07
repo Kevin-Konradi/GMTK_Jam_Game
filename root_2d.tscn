@@ -59,15 +59,15 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3bgdc")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1yx4n")
 }],
 "loop": true,
 "name": &"fall",
-"speed": 7.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -431,7 +431,6 @@ sources/1 = SubResource("TileSetAtlasSource_fvobd")
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(1532, -884)
 scale = Vector2(5, 5)
-
 script = ExtResource("1_syxgt")
 
 [node name="Collision" type="CollisionShape2D" parent="Player"]
@@ -480,7 +479,6 @@ layer_0/tile_data = PackedInt32Array(-524274, 262145, 5, -458738, 262145, 5, -39
 
 [node name="Searcher" type="Area2D" parent="."]
 position = Vector2(200, -7)
-
 script = ExtResource("1_uei5n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
