@@ -28,7 +28,9 @@ func _physics_process(delta):
 
 
 func handle_floor():
-	if not_on_floor_time > 0: $Particles.emitting = true
+	$PersistentSlideParticles.emitting = false
+	
+	if not_on_floor_time > 0: $LandParticles.emitting = true
 	not_on_floor_time = 0
 	
 	# Handle Jump.
@@ -55,6 +57,10 @@ func handle_fall(delta):
 	if not_on_floor_time > fall_animation_start_threshold:
 		$Sprite.play("fall")
 
+func handle_fall_not_sliding(delta):
+	is_wall_sliding = false
+	$PersistentSlideParticles.emitting = false
+	handle_fall(delta)
 
 func handle_lateral_movement():
 	# Get the input direction and handle the movement/deceleration.
@@ -70,8 +76,7 @@ func handle_lateral_movement():
 func handle_wall_jump(delta):
 	if velocity.y > walljump_velocity_threshhold and is_on_wall_only():
 		if velocity.y < wall_slide_velocity:
-			is_wall_sliding = false
-			handle_fall(delta)
+			handle_fall_not_sliding(delta)
 		else:
 			is_wall_sliding = true
 			velocity.y = wall_slide_velocity
@@ -88,7 +93,14 @@ func handle_wall_jump(delta):
 				velocity.y = jump_velocity
 				velocity.x = (-jump_velocity * 3) * new_direction
 				$Sprite.play("jump")
+			else:
+				$Sprite.play("slide")
+				
+				var x = $PersistentSlideParticles.position.x
+				x = abs(x) * -new_direction
+				$PersistentSlideParticles.position.x = x
+				
+				$PersistentSlideParticles.emitting = true
 				
 	else:
-		is_wall_sliding = false
-		handle_fall(delta)
+		handle_fall_not_sliding(delta)
