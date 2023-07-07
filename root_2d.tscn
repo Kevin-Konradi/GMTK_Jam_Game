@@ -429,7 +429,7 @@ sources/1 = SubResource("TileSetAtlasSource_fvobd")
 [node name="Root" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
-scale = Vector2(10, 10)
+scale = Vector2(5, 5)
 script = ExtResource("1_syxgt")
 
 [node name="Collision" type="CollisionShape2D" parent="Player"]
@@ -472,7 +472,6 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Map" type="TileMap" parent="."]
-visible = false
 tile_set = SubResource("TileSet_4uuhv")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 65537, 0, 327680, 196609, 0, 327681, 131073, 1, 327682, 196609, 0, 393215, 196609, 0, 5, 196609, 0, 327683, 196609, 0, 262146, 327681, 6)
