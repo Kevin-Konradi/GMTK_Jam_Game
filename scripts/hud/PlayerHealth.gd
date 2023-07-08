@@ -3,7 +3,7 @@ extends HBoxContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	%"Player".connect("health_updated", _on_Player_health_updated)
+	%"Player".connect("health_changed", _on_Player_health_updated)
 	add_hearts(%"Player".initial_health)
 
 func _on_Player_health_updated(new_health):	

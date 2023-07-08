@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bkgeu6cnbx62r" path="res://assets/audio/title-theme.mp3" id="2_es485"]
 [ext_resource type="FontFile" uid="uid://bnpugh1dvgu84" path="res://assets/fonts/rose-sally-font/RoseSally-ALAVA.otf" id="3_oclin"]
 [ext_resource type="VideoStream" path="res://assets/video/intro.ogv" id="3_wbgdw"]
-[ext_resource type="Theme" uid="uid://b5l8eyrole4ga" path="res://assets/materials/ui_theme.tres" id="5_wi8hi"]
+[ext_resource type="Theme" uid="uid://c2jh6vy57ui4n" path="res://assets/materials/ui_theme.tres" id="5_wi8hi"]
 [ext_resource type="Script" path="res://scripts/ui/MusicMuteButton.gd" id="7_t4f8v"]
 
 [sub_resource type="Theme" id="Theme_41r5i"]
