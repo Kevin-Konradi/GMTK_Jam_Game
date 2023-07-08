@@ -272,8 +272,9 @@ position = Vector2(200, -7)
 script = ExtResource("3_vxf4o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.325, 0.325)
+zoom = Vector2(0.744643, 0.744643)
 script = ExtResource("7_xag7r")
+animation_rel_position = 0.357143
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-5036, -1104)
@@ -341,6 +342,9 @@ script = ExtResource("10_ot2yt")
 unique_name_in_owner = true
 visible = false
 color = Color(0.152941, 0.152941, 0.152941, 1)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.870588, 0.870588, 0.870588, 1)
 
 [node name="LevelThemePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_w1xco")

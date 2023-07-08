@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c85k8m3qeery5"]
+[gd_scene load_steps=16 format=3 uid="uid://c85k8m3qeery5"]
 
 [ext_resource type="TileSet" uid="uid://qp51x6j73veh" path="res://assets/materials/tileset.tres" id="1_3evog"]
 [ext_resource type="Script" path="res://scripts/mechanics/Level.gd" id="2_2dxkx"]
 [ext_resource type="Texture2D" uid="uid://dqb5718uds2m4" path="res://assets/spritesheets/kenney_input-prompts-pixel-16/tilemap_packed.png" id="3_q2xit"]
+[ext_resource type="Texture2D" uid="uid://gdnth55m4xbp" path="res://assets/spritesheets/moon_or_smth.png" id="4_dy867"]
+[ext_resource type="Texture2D" uid="uid://bscwhxtx2eyyk" path="res://assets/spritesheets/light.webp" id="5_0x075"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhsfp"]
 atlas = ExtResource("3_q2xit")
@@ -61,6 +63,28 @@ _data = {
 "HintAnimation": SubResource("Animation_uxlk3")
 }
 
+[sub_resource type="Animation" id="Animation_1udfj"]
+resource_name = "moon_anim"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2149, -1006), Vector2(2149, -980), Vector2(2149, -1006)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eqjve"]
+_data = {
+"moon_anim": SubResource("Animation_1udfj")
+}
+
 [node name="Tutorial" type="TileMap"]
 tile_set = ExtResource("1_3evog")
 format = 2
@@ -107,3 +131,20 @@ autoplay = "HintAnimation"
 libraries = {
 "": SubResource("AnimationLibrary_gufxi")
 }
+
+[node name="Moon" type="Sprite2D" parent="."]
+position = Vector2(2149, -941)
+texture = ExtResource("4_dy867")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Moon"]
+autoplay = "moon_anim"
+libraries = {
+"": SubResource("AnimationLibrary_eqjve")
+}
+
+[node name="PointLight2D" type="PointLight2D" parent="Moon"]
+position = Vector2(-55.0001, 76.9999)
+scale = Vector2(8.60156, 8.625)
+color = Color(0.270588, 0, 0.972549, 1)
+energy = 5.93
+texture = ExtResource("5_0x075")
