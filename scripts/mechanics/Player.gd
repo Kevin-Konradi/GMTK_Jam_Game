@@ -32,7 +32,7 @@ signal health_changed(new_value)
 
 func _ready():
 	health = initial_health
-
+	get_parent().map.connect("ready", teleport_to_spawn)
 
 func _physics_process(delta):
 	handle_lateral_movement()
@@ -44,7 +44,7 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-func tp_spawn():
+func teleport_to_spawn():
 	position = get_parent().map.spawn.position
 
 func handle_floor():
@@ -64,7 +64,6 @@ func handle_floor():
 	if Input.is_action_just_pressed("jump"):
 		velocity.y = jump_velocity
 		$Sprite.play("jump")
-		print("yeet")
 		
 	else:
 		$Sprite.play("walk")
