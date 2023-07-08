@@ -112,19 +112,23 @@ func handle_wall_jump(delta):
 
 			if new_direction:
 				$Sprite.flip_h = new_direction == -1
-				velocity.x = new_direction * -3
-			else:
-				velocity.x = move_toward(velocity.x, 0, speed_cap)
+
+
+			if not Input.get_action_strength("left") or not Input.get_action_strength("right"):
+				if new_direction:
+					velocity.x = new_direction * -0.5
+				else:
+					velocity.x = new_direction * -0.5
 
 			# Handle Wall Jump.
 			if Input.is_action_just_pressed("jump"):
-				velocity.y = jump_velocity * 1.4
+				velocity.y = jump_velocity * 1.2
 
 				if Input.get_action_strength("left") or Input.get_action_strength("right"):
 					accelerationTimer = 0
-					velocity.x = (-jump_velocity * 2) * new_direction
+					velocity.x = (-jump_velocity * 0.4) * new_direction
 				else:
-					velocity.x = (-jump_velocity * 1.2) * new_direction
+					velocity.x = (-jump_velocity * 0.2) * new_direction
 				
 				$Sprite.play("jump")
 			else:
