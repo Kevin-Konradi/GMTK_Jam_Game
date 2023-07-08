@@ -68,7 +68,7 @@ layer_0/tile_data = PackedInt32Array(655360, 131073, 5, 655361, 131073, 5, 65536
 script = ExtResource("2_2dxkx")
 
 [node name="Spawn" type="Node2D" parent="."]
-position = Vector2(-2540, 1061)
+position = Vector2(-2294, 1085)
 
 [node name="Hints" type="Node2D" parent="."]
 
