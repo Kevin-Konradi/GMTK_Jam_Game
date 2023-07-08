@@ -29,10 +29,11 @@ var health
 var moved = false
 
 signal health_changed(new_value)
+signal player_spawned
 
 func _ready():
 	health = initial_health
-	get_parent().map.connect("ready", teleport_to_spawn)
+	get_parent().map.connect("ready", _on_map_ready)
 
 func _physics_process(delta):
 	handle_lateral_movement()
@@ -43,6 +44,10 @@ func _physics_process(delta):
 		handle_wall_jump(delta)
 	
 	move_and_slide()
+
+func _on_map_ready():
+	teleport_to_spawn()
+	player_spawned.emit()
 
 func teleport_to_spawn():
 	position = get_parent().map.spawn.position
