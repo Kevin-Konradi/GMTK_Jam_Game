@@ -92,13 +92,13 @@ texture = SubResource("AtlasTexture_k88h2")
 
 [node name="ArrowLeftRight" type="Sprite2D" parent="Hints"]
 texture_filter = 1
-position = Vector2(-2301.19, 661)
+position = Vector2(-2280.19, 661)
 scale = Vector2(15, 15)
 texture = SubResource("AtlasTexture_t1sx6")
 
 [node name="ArrowTop" type="Sprite2D" parent="Hints"]
 texture_filter = 1
-position = Vector2(655, 387.34)
+position = Vector2(655, 440.904)
 scale = Vector2(15, 15)
 texture = SubResource("AtlasTexture_ggupr")
 

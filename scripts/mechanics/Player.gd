@@ -50,7 +50,9 @@ func teleport_to_spawn():
 func handle_floor():
 	$PersistentSlideParticles.emitting = false
 	
-	if not_on_floor_time > 0: $LandParticles.emitting = true
+	if not_on_floor_time > 0: 
+		$LandParticles.emitting = true
+		$LandSound.play()
 	not_on_floor_time = 0
 
 	if not is_wall_sliding:
@@ -131,6 +133,7 @@ func handle_wall_jump(delta):
 					velocity.x = (-jump_velocity * 0.2) * new_direction
 				
 				$Sprite.play("jump")
+				$WallJumpSound.play()
 			else:
 				$Sprite.play("slide")
 				
