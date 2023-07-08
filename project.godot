@@ -52,3 +52,8 @@ esc={
 [physics]
 
 2d/default_gravity=1500.0
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.0627451, 0.0627451, 0.0627451, 1)
+anti_aliasing/quality/msaa_2d=2
