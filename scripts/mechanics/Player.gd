@@ -26,10 +26,13 @@ var is_wall_sliding = false
 
 var health
 
+var moved = false
+
 signal health_changed(new_value)
 
 func _ready():
 	health = initial_health
+
 
 func _physics_process(delta):
 	handle_lateral_movement()
@@ -41,7 +44,8 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-
+func tp_spawn():
+	position = get_parent().map.spawn.position
 
 func handle_floor():
 	$PersistentSlideParticles.emitting = false

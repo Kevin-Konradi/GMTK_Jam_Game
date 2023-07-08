@@ -18,6 +18,8 @@ func _deferred_goto_level(map_name):
 	var map_path = "res://levels/%s.tscn" % map_name
 	var map = ResourceLoader.load(map_path).instantiate()
 	current_scene.add_child(map)
+	
+	current_scene.map = map
 
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene

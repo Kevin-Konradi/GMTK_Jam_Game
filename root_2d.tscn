@@ -1,6 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://cgwrq3tq7wwkb"]
+[gd_scene load_steps=33 format=3 uid="uid://cgwrq3tq7wwkb"]
 
 [ext_resource type="Script" path="res://scripts/mechanics/Player.gd" id="1_3fgfs"]
+[ext_resource type="Script" path="res://scripts/mechanics/Root.gd" id="1_nnlp2"]
 [ext_resource type="Texture2D" uid="uid://c6rouh6d26q4g" path="res://assets/spritesheets/player_sprites.png" id="2_ojde1"]
 [ext_resource type="Script" path="res://scripts/mechanics/Searcher.gd" id="3_vxf4o"]
 [ext_resource type="Shader" path="res://assets/searcher.gdshader" id="4_qmrx2"]
@@ -153,6 +154,7 @@ font = ExtResource("7_x2vmt")
 font_size = 70
 
 [node name="Root" type="Node2D"]
+script = ExtResource("1_nnlp2")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
