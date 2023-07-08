@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="GMTK_GameJam"
-run/main_scene="res://root_2d.tscn"
+run/main_scene="res://root_ui.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 InputBuffer="*res://scripts/InputBuffer.gd"
+SceneManager="*res://scripts/SceneManager.gd"
 
 [display]
 
