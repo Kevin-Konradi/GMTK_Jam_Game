@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cgwrq3tq7wwkb"]
+[gd_scene load_steps=32 format=3 uid="uid://cgwrq3tq7wwkb"]
 
 [ext_resource type="Script" path="res://scripts/mechanics/Player.gd" id="1_3fgfs"]
 [ext_resource type="Texture2D" uid="uid://c6rouh6d26q4g" path="res://assets/spritesheets/player_sprites.png" id="2_ojde1"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://scripts/hud/TimeLabel.gd" id="7_nrxbo"]
 [ext_resource type="FontFile" uid="uid://bnpugh1dvgu84" path="res://assets/fonts/rose-sally-font/RoseSally-ALAVA.otf" id="7_x2vmt"]
 [ext_resource type="Script" path="res://scripts/hud/PlayerHealth.gd" id="8_5rbq7"]
+[ext_resource type="Script" path="res://scripts/hud/PauseMenu.gd" id="9_b04wl"]
+[ext_resource type="Script" path="res://scripts/hud/ContinueButton.gd" id="10_ot2yt"]
 
 [sub_resource type="Curve" id="Curve_euwlj"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 1.36239e-07, 0.0, 0, 0]
@@ -269,3 +271,29 @@ offset_top = 10.0
 offset_right = 50.0
 offset_bottom = 50.0
 script = ExtResource("8_5rbq7")
+
+[node name="PauseMenu" type="MarginContainer" parent="UI"]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -39.0
+offset_right = 38.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_b04wl")
+
+[node name="ContinueButton" type="Button" parent="UI/PauseMenu"]
+layout_mode = 2
+text = "Continue"
+script = ExtResource("10_ot2yt")
+
+[node name="Darkener" type="CanvasModulate" parent="."]
+unique_name_in_owner = true
+visible = false
+color = Color(0.152941, 0.152941, 0.152941, 1)
