@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://82loedftchyl" path="res://assets/audio/level-theme.mp3" id="12_w1xco"]
 
 [sub_resource type="Curve" id="Curve_euwlj"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 5.77984e-07, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 1.36239e-07, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmkbo"]
@@ -129,7 +129,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 9.0
 }]
 
 [sub_resource type="Curve" id="Curve_x6lsc"]
@@ -154,7 +154,7 @@ shader = ExtResource("4_qmrx2")
 font = ExtResource("7_x2vmt")
 font_size = 70
 
-[node name="Root2" type="Node2D"]
+[node name="Root" type="Node2D"]
 script = ExtResource("1_nnlp2")
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -162,11 +162,7 @@ unique_name_in_owner = true
 position = Vector2(1532, -884)
 scale = Vector2(5, 5)
 script = ExtResource("1_3fgfs")
-speed_cap = 600.0
-acceleration = 0.12
 accelerationCurve = SubResource("Curve_euwlj")
-jump_velocity = -700.0
-friction = 0.145
 
 [node name="Collision" type="CollisionShape2D" parent="Player"]
 position = Vector2(-0.5, 0.5)
@@ -175,13 +171,10 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player"]
-z_index = 10
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_m2ven")
-animation = &"slide"
+animation = &"walk"
 autoplay = "default"
-frame = 1
-frame_progress = 0.143209
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
