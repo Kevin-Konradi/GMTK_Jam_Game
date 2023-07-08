@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cy67fr4ekc6oh"]
+[gd_scene load_steps=3 format=3 uid="uid://cy67fr4ekc6oh"]
 
 [ext_resource type="Script" path="res://scripts/ui/StartButton.gd" id="1_ylqud"]
+[ext_resource type="AudioStream" uid="uid://bkgeu6cnbx62r" path="res://assets/audio/title-theme.mp3" id="2_es485"]
 
 [node name="Root" type="Control"]
 layout_mode = 3
@@ -10,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="."]
+[node name="StartGameButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -25,3 +26,8 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Start Game"
 script = ExtResource("1_ylqud")
+
+[node name="TitleThemePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_es485")
+volume_db = 1.0
+autoplay = true

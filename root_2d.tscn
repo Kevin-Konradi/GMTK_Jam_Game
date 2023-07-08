@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cgwrq3tq7wwkb"]
+[gd_scene load_steps=34 format=3 uid="uid://cgwrq3tq7wwkb"]
 
 [ext_resource type="Script" path="res://scripts/mechanics/Player.gd" id="1_3fgfs"]
 [ext_resource type="Script" path="res://scripts/mechanics/Root.gd" id="1_nnlp2"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/hud/PlayerHealth.gd" id="8_5rbq7"]
 [ext_resource type="Script" path="res://scripts/hud/PauseMenu.gd" id="9_b04wl"]
 [ext_resource type="Script" path="res://scripts/hud/ContinueButton.gd" id="10_ot2yt"]
+[ext_resource type="AudioStream" uid="uid://82loedftchyl" path="res://assets/audio/level-theme.mp3" id="12_w1xco"]
 
 [sub_resource type="Curve" id="Curve_euwlj"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 1.36239e-07, 0.0, 0, 0]
@@ -299,3 +300,7 @@ script = ExtResource("10_ot2yt")
 unique_name_in_owner = true
 visible = false
 color = Color(0.152941, 0.152941, 0.152941, 1)
+
+[node name="LevelThemePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_w1xco")
+autoplay = true
