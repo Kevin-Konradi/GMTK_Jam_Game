@@ -50,7 +50,7 @@ func handle_floor():
 
 	
 	# Handle Jump.
-	if InputBuffer.is_action_press_buffered("jump"):
+	if Input.is_action_just_pressed("jump"):
 		velocity.y = jump_velocity
 		$Sprite.play("jump")
 		print("yeet")
