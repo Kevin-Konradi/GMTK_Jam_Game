@@ -1,13 +1,109 @@
-[gd_scene load_steps=3 format=3 uid="uid://c85k8m3qeery5"]
+[gd_scene load_steps=12 format=3 uid="uid://c85k8m3qeery5"]
 
 [ext_resource type="TileSet" uid="uid://qp51x6j73veh" path="res://assets/materials/tileset.tres" id="1_3evog"]
 [ext_resource type="Script" path="res://scripts/mechanics/Level.gd" id="2_2dxkx"]
+[ext_resource type="Texture2D" uid="uid://dqb5718uds2m4" path="res://assets/spritesheets/kenney_input-prompts-pixel-16/tilemap_packed.png" id="3_q2xit"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhsfp"]
+atlas = ExtResource("3_q2xit")
+region = Rect2(288.756, 176.393, 13.9185, 14.7292)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_445lq"]
+atlas = ExtResource("3_q2xit")
+region = Rect2(320.022, 175.782, 15.2697, 16.2157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k88h2"]
+atlas = ExtResource("3_q2xit")
+region = Rect2(496.879, 224.447, 46.9662, 14.3703)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ff0hc"]
+load_path = "res://.godot/imported/tilemap_packed.png-dd0d62e106da8c5cfa1ff819b676e67f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1sx6"]
+atlas = SubResource("CompressedTexture2D_ff0hc")
+region = Rect2(527.666, 268.469, 16.2787, 16.9969)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggupr"]
+atlas = SubResource("CompressedTexture2D_ff0hc")
+region = Rect2(417.998, 273.702, 12.5671, 12.5671)
+
+[sub_resource type="Animation" id="Animation_uxlk3"]
+resource_name = "HintAnimation"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArrowTop:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(655, 420), Vector2(655, 332), Vector2(655, 420)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArrowLeftRight:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-2292, 661), Vector2(-2326, 661), Vector2(-2294, 661), Vector2(-2271, 661), Vector2(-2292, 661)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gufxi"]
+_data = {
+"HintAnimation": SubResource("Animation_uxlk3")
+}
 
 [node name="Tutorial" type="TileMap"]
 tile_set = ExtResource("1_3evog")
 format = 2
-layer_0/tile_data = PackedInt32Array(655360, 131073, 5, 655361, 131073, 5, 655362, 131073, 5, 655363, 131073, 5, 655364, 131073, 5, 655365, 131073, 5, 655366, 131073, 5, 655367, 131073, 5, 655368, 131073, 5, 655369, 131073, 5, 655370, 131073, 5, 655371, 131073, 5, 655372, 131073, 5, 655373, 131073, 5, 655374, 131073, 5, 655375, 131073, 5, 655376, 131073, 5, 655377, 131073, 5, 655378, 131073, 5, 655379, 131073, 5, 655380, 131073, 5, 655381, 131073, 5, 589829, 262145, 5, 589836, 327681, 5, 524300, 327681, 5, 458764, 327681, 5, 655382, 131073, 5, 655383, 131073, 5, 589825, 196609, 9, 589847, 327681, 6, 524311, 327681, 6, 458775, 327681, 6, 393239, 327681, 6, 327703, 327681, 6, 262167, 327681, 6, 327702, 327681, 6, 524307, 327681, 6, 458771, 327681, 6, 393235, 327681, 6, 327699, 327681, 6, 262163, 327681, 6, 196627, 327681, 6, 131091, 327681, 6, 196628, 327681, 6, 262164, 196609, 7, 131092, 131073, 9, 262168, 327681, 6, 262169, 327681, 6, 262170, 327681, 6, 262171, 327681, 6, 393228, 327681, 1, 196633, 393217, 3, 589832, 393217, 1, 589840, 393217, 1)
+layer_0/tile_data = PackedInt32Array(655360, 131073, 5, 655361, 131073, 5, 655362, 131073, 5, 655363, 131073, 5, 655364, 131073, 5, 655365, 131073, 5, 655366, 131073, 5, 655367, 131073, 5, 655368, 131073, 5, 655369, 131073, 5, 655370, 131073, 5, 655371, 131073, 5, 655372, 131073, 5, 655373, 131073, 5, 655374, 131073, 5, 655375, 131073, 5, 655376, 131073, 5, 655377, 131073, 5, 655378, 131073, 5, 655379, 131073, 5, 655380, 131073, 5, 655381, 131073, 5, 589829, 262145, 5, 589836, 327681, 5, 524300, 327681, 5, 458764, 327681, 5, 655382, 131073, 5, 655383, 131073, 5, 589847, 327681, 6, 524311, 327681, 6, 458775, 327681, 6, 393239, 327681, 6, 327703, 327681, 6, 262167, 327681, 6, 327702, 327681, 6, 524307, 327681, 6, 458771, 327681, 6, 393235, 327681, 6, 327699, 327681, 6, 262163, 327681, 6, 196627, 327681, 6, 131091, 327681, 6, 196628, 327681, 6, 262164, 196609, 7, 131092, 131073, 9, 262168, 327681, 6, 262169, 327681, 6, 262170, 327681, 6, 262171, 327681, 6, 393228, 327681, 1, 196633, 393217, 3, 589832, 393217, 1, 589840, 393217, 1, 720895, 131073, 5, 720894, 131073, 5, 720893, 131073, 5, 720892, 131073, 5, 720891, 131073, 5, 720890, 131073, 5, 720889, 131073, 5, 720888, 131073, 5, 720887, 131073, 5, 720886, 131073, 5, 720885, 131073, 5, 720884, 131073, 5, 720883, 131073, 5, 720882, 131073, 5, 720881, 131073, 5, 720880, 131073, 5, 720879, 131073, 5, 720878, 131073, 5, 720877, 131073, 5, 720876, 131073, 5, 720875, 131073, 5, 720874, 131073, 5, 720873, 131073, 5, 720872, 131073, 5, 655336, 262145, 6, 589800, 262145, 6, 524264, 262145, 6, 458728, 262145, 6, 393192, 262145, 6, 655339, 196609, 9, 655343, 393217, 1)
 script = ExtResource("2_2dxkx")
 
 [node name="Spawn" type="Node2D" parent="."]
-position = Vector2(176, 1090)
+position = Vector2(-2540, 1061)
+
+[node name="Hints" type="Node2D" parent="."]
+
+[node name="A" type="Sprite2D" parent="Hints"]
+texture_filter = 1
+position = Vector2(-2540, 705)
+scale = Vector2(15, 15)
+texture = SubResource("AtlasTexture_bhsfp")
+
+[node name="D" type="Sprite2D" parent="Hints"]
+texture_filter = 1
+position = Vector2(-2045, 718)
+scale = Vector2(15, 15)
+texture = SubResource("AtlasTexture_445lq")
+
+[node name="Space" type="Sprite2D" parent="Hints"]
+texture_filter = 1
+position = Vector2(648, 638)
+scale = Vector2(15, 15)
+texture = SubResource("AtlasTexture_k88h2")
+
+[node name="ArrowLeftRight" type="Sprite2D" parent="Hints"]
+texture_filter = 1
+position = Vector2(-2301.19, 661)
+scale = Vector2(15, 15)
+texture = SubResource("AtlasTexture_t1sx6")
+
+[node name="ArrowTop" type="Sprite2D" parent="Hints"]
+texture_filter = 1
+position = Vector2(655, 387.34)
+scale = Vector2(15, 15)
+texture = SubResource("AtlasTexture_ggupr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hints"]
+autoplay = "HintAnimation"
+libraries = {
+"": SubResource("AnimationLibrary_gufxi")
+}
