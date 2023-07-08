@@ -1,11 +1,19 @@
 extends CharacterBody2D
 
 
-@export var speed = 300.0
+@export var speed_cap: float = 300.0
+@export var acceleration: float = .07
+var accelerationTimer: float = 0.0
+@export var accelerationCurve: Curve
 @export var jump_velocity = -500.0
+var rate: float = .1
+@export var friction = .1
+
 @export var fall_animation_start_threshold = 0.7
 @export var walljump_velocity_threshhold = 10
 @export var wall_slide_velocity = 100
+
+@export var walk_anim_threshhold = 10
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -27,28 +35,28 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+
 func handle_floor():
 	$PersistentSlideParticles.emitting = false
 	
 	if not_on_floor_time > 0: $LandParticles.emitting = true
 	not_on_floor_time = 0
-	
-	# Handle Jump.
-	if Input.is_action_just_pressed("jump"):
-		velocity.y = jump_velocity
-		
-	elif velocity == Vector2.ZERO:
-		$Sprite.play("default")
-		
-	else:
-		$Sprite.play("walk")
-		
+
 	if not is_wall_sliding:
-		if velocity == Vector2.ZERO and is_on_floor():
+		if velocity.length() < walk_anim_threshhold and is_on_floor():
 			$Sprite.play("default")
 		else:
 			$Sprite.play("walk")
 
+	
+	# Handle Jump.
+	if InputBuffer.is_action_press_buffered("jump"):
+		velocity.y = jump_velocity
+		$Sprite.play("jump")
+		print("yeet")
+		
+	else:
+		$Sprite.play("walk")
 
 func handle_fall(delta):
 	velocity.y += gravity * delta
@@ -65,12 +73,21 @@ func handle_fall_not_sliding(delta):
 func handle_lateral_movement():
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("left", "right")
-	if direction:
+	if direction != 0:
 		if not is_wall_sliding:
 			$Sprite.flip_h = direction == -1
-		velocity.x = direction * speed
+		
+	if Input.get_action_strength("left") or Input.get_action_strength("right"):
+		accelerationTimer += acceleration * rate
+	
+	accelerationTimer = clamp(accelerationTimer, 0, 1)
+
+	if direction != 0:
+		velocity.x += accelerationCurve.sample(accelerationTimer) * speed_cap * direction
+		velocity.x = clamp(velocity.x, -speed_cap, speed_cap)
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+		accelerationTimer = 0
+		velocity.x = lerp(velocity.x, 0.0, friction)
 
 
 func handle_wall_jump(delta):
@@ -79,6 +96,7 @@ func handle_wall_jump(delta):
 			handle_fall_not_sliding(delta)
 		else:
 			is_wall_sliding = true
+			not_on_floor_time = 0
 			velocity.y = wall_slide_velocity
 			var new_direction = get_wall_normal().normalized().x
 
@@ -86,12 +104,18 @@ func handle_wall_jump(delta):
 				$Sprite.flip_h = new_direction == -1
 				velocity.x = new_direction * -3
 			else:
-				velocity.x = move_toward(velocity.x, 0, speed)
+				velocity.x = move_toward(velocity.x, 0, speed_cap)
 
 			# Handle Wall Jump.
 			if Input.is_action_just_pressed("jump"):
-				velocity.y = jump_velocity
-				velocity.x = (-jump_velocity * 3) * new_direction
+				velocity.y = jump_velocity * 1.4
+
+				if Input.get_action_strength("left") or Input.get_action_strength("right"):
+					accelerationTimer = 0
+					velocity.x = (-jump_velocity * 2) * new_direction
+				else:
+					velocity.x = (-jump_velocity * 1.2) * new_direction
+				
 				$Sprite.play("jump")
 			else:
 				$Sprite.play("slide")

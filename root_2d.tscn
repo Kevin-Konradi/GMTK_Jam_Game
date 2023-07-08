@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cgwrq3tq7wwkb"]
+[gd_scene load_steps=29 format=3 uid="uid://cgwrq3tq7wwkb"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_syxgt"]
 [ext_resource type="Script" path="res://scripts/Searcher.gd" id="1_uei5n"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c6rouh6d26q4g" path="res://assets/spritesheets/player_sprites.png" id="2_ojde1"]
 [ext_resource type="Shader" path="res://scripts/searcher.gdshader" id="5_f3t5o"]
 [ext_resource type="Texture2D" uid="uid://cd407ykhac4wu" path="res://assets/searcher.png" id="6_akcmm"]
+
+[sub_resource type="Curve" id="Curve_euwlj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 1.36239e-07, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmkbo"]
 size = Vector2(17, 17)
@@ -144,7 +148,7 @@ texture_region_size = Vector2i(128, 128)
 3:0/0 = 0
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-61, -61, 61, -61, 61, 61, -61, 61)
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
@@ -466,6 +470,7 @@ shader = ExtResource("5_f3t5o")
 position = Vector2(1532, -884)
 scale = Vector2(5, 5)
 script = ExtResource("1_syxgt")
+accelerationCurve = SubResource("Curve_euwlj")
 
 [node name="Collision" type="CollisionShape2D" parent="Player"]
 position = Vector2(-0.5, 0.5)
@@ -478,6 +483,8 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_m2ven")
 animation = &"slide"
 autoplay = "default"
+frame = 1
+frame_progress = 0.143209
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -510,6 +517,7 @@ metadata/_edit_group_ = true
 [node name="PersistentSlideParticles" type="CPUParticles2D" parent="Player"]
 z_index = 1
 position = Vector2(-9, 0.800003)
+emitting = false
 amount = 40
 lifetime = 3.0
 speed_scale = 1.5
