@@ -15,6 +15,7 @@ var rate: float = .1
 
 @export var walk_anim_threshhold = 10
 
+@export var initial_health = 3
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -23,6 +24,12 @@ var not_on_floor_time = 0
 
 var is_wall_sliding = false
 
+var health
+
+signal health_changed(new_value)
+
+func _ready():
+	health = initial_health
 
 func _physics_process(delta):
 	handle_lateral_movement()
@@ -128,3 +135,7 @@ func handle_wall_jump(delta):
 				
 	else:
 		handle_fall_not_sliding(delta)
+		
+func take_damage():
+	health -= 1
+	health_changed.emit(health)

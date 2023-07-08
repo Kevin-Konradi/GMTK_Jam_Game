@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cgwrq3tq7wwkb"]
+[gd_scene load_steps=33 format=3 uid="uid://cgwrq3tq7wwkb"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_syxgt"]
 [ext_resource type="Script" path="res://scripts/Searcher.gd" id="1_uei5n"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://c6rouh6d26q4g" path="res://assets/spritesheets/player_sprites.png" id="2_ojde1"]
 [ext_resource type="Shader" path="res://scripts/searcher.gdshader" id="5_f3t5o"]
 [ext_resource type="Texture2D" uid="uid://cd407ykhac4wu" path="res://assets/searcher.png" id="6_akcmm"]
+[ext_resource type="Script" path="res://scripts/TimeLabel.gd" id="7_nrm4b"]
+[ext_resource type="FontFile" uid="uid://bnpugh1dvgu84" path="res://assets/fonts/rose-sally-font/RoseSally-ALAVA.otf" id="7_x2vmt"]
+[ext_resource type="Script" path="res://scripts/PlayerHealth.gd" id="8_ek6p1"]
 
 [sub_resource type="Curve" id="Curve_euwlj"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 1.36239e-07, 0.0, 0, 0]
@@ -464,9 +467,14 @@ sources/1 = SubResource("TileSetAtlasSource_fvobd")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lp0ko"]
 shader = ExtResource("5_f3t5o")
 
+[sub_resource type="LabelSettings" id="LabelSettings_78hmc"]
+font = ExtResource("7_x2vmt")
+font_size = 70
+
 [node name="Root" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(1532, -884)
 scale = Vector2(5, 5)
 script = ExtResource("1_syxgt")
@@ -562,3 +570,28 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("6_akcmm")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TimeLabel" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.0
+offset_top = 10.0
+offset_right = 77.0
+offset_bottom = 81.0
+grow_horizontal = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_78hmc")
+script = ExtResource("7_nrm4b")
+
+[node name="Timer" type="Timer" parent="UI/TimeLabel"]
+autostart = true
+
+[node name="PlayerHealth" type="HBoxContainer" parent="UI"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 50.0
+script = ExtResource("8_ek6p1")
