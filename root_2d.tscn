@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cgwrq3tq7wwkb"]
+[gd_scene load_steps=39 format=3 uid="uid://bxa54fo5m76k2"]
 
 [ext_resource type="Script" path="res://scripts/mechanics/Player.gd" id="1_3fgfs"]
 [ext_resource type="Script" path="res://scripts/mechanics/Root.gd" id="1_nnlp2"]
@@ -268,30 +268,35 @@ stream = ExtResource("4_rhylr")
 [node name="LandSound" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("4_vev11")
 
-[node name="Searcher" type="Area2D" parent="."]
-position = Vector2(200, -7)
+[node name="Searcher" type="RigidBody2D" parent="."]
+z_index = 20
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
 script = ExtResource("3_vxf4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Searcher"]
+position = Vector2(-5236, -1097)
+scale = Vector2(10, 10)
+shape = SubResource("CircleShape2D_a3kxb")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Searcher"]
+material = SubResource("ShaderMaterial_lp0ko")
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("6_akcmm")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="Searcher"]
+
+[node name="BiasChangeTimer" type="Timer" parent="Searcher"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.744643, 0.744643)
 script = ExtResource("7_xag7r")
 animation_rel_position = 0.357143
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-5036, -1104)
-scale = Vector2(10, 10)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_a3kxb")
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-material = SubResource("ShaderMaterial_lp0ko")
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("6_akcmm")
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
